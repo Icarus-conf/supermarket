@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:supermarket/Config/routes/app_routes.dart';
 import 'package:supermarket/Core/utils/app_text_style.dart';
 import 'package:supermarket/Core/utils/services/image_service.dart';
 import 'package:supermarket/Core/utils/widgets/custom_btn_widget.dart';
@@ -45,6 +46,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
         }
         if (state is AuthSuccess) {
           log("Successfully signed up");
+          Navigator.pushNamed(context, RoutesNames.signInView);
         }
       },
       builder: (context, state) {
