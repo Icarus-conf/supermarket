@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supermarket/Features/Auth/Presentation/Views/Bloc/auth_bloc.dart';
 import 'package:supermarket/Features/Auth/Presentation/Views/Widgets/sign_in_view/sign_in_view.dart';
-import 'package:supermarket/Features/Home/Presentation/Views/home_view.dart';
+import 'package:supermarket/Features/Home/Presentation/Widgets/bottom_navbar.dart';
 
 class AuthView extends StatefulWidget {
   const AuthView({super.key});
@@ -26,7 +26,7 @@ class _AuthViewState extends State<AuthView> {
           return const Scaffold(
               body: Center(child: CircularProgressIndicator()));
         } else if (state is AuthSuccess) {
-          return const HomeView();
+          return const CustomBottomNavBar();
         } else {
           return const SignInView();
         }

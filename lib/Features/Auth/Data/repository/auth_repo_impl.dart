@@ -1,4 +1,6 @@
 // auth_repository_impl.dart
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -17,17 +19,14 @@ class AuthRepositoryImpl implements AuthRepository {
       String email, String password, String username,
       [String? imageUrl]) async {
     try {
-      // Create user with Firebase Auth
       UserCredential userCredential =
           await _auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
 
-      // Get the user ID
       String userId = userCredential.user!.uid;
 
-      // Create a new UserModel instance
       UserModel userModel = UserModel(
         id: userId,
         email: email,
@@ -35,12 +34,11 @@ class AuthRepositoryImpl implements AuthRepository {
         imageUrl: imageUrl,
       );
 
-      // Save user data to Firestore
       await _firestore.collection('users').doc(userId).set(userModel.toJson());
 
-      // Return the user model
       return right(userModel);
     } catch (e) {
+      log("Failed to register user: $e");
       return left(RemoteFailures(e.toString()));
     }
   }
@@ -55,17 +53,25 @@ class AuthRepositoryImpl implements AuthRepository {
         email: email,
         password: password,
       );
-      final User user = userCredential.user!;
+
+      // Ensure user object is not null
+      final User? user = userCredential.user;
+      if (user == null) {
+        log("Login failed: Firebase user is null.");
+        return Left(RemoteFailures("User login failed. Please try again."));
+      }
 
       // Fetch user data from Firestore
       final doc = await _firestore.collection('users').doc(user.uid).get();
-      if (doc.exists) {
+      if (doc.exists && doc.data() != null) {
         final userModel = UserModel.fromJson(doc.data()!);
         return Right(userModel);
       } else {
+        log("User data not found in Firestore for UID: ${user.uid}");
         return Left(RemoteFailures("User data not found in Firestore"));
       }
     } catch (e) {
+      log("Failed to log in user: $e");
       return Left(RemoteFailures(e.toString()));
     }
   }
@@ -76,6 +82,7 @@ class AuthRepositoryImpl implements AuthRepository {
       await _auth.signOut();
       return const Right(null);
     } catch (e) {
+      log("Failed to log out user: $e");
       return Left(RemoteFailures(e.toString()));
     }
   }
@@ -91,12 +98,15 @@ class AuthRepositoryImpl implements AuthRepository {
           final userModel = UserModel.fromJson(doc.data()!);
           return Right(userModel);
         } else {
+          log("No user data found for UID: ${user.uid}");
           return const Right(null);
         }
       } else {
+        log("No user is currently logged in");
         return const Right(null);
       }
     } catch (e) {
+      log("Error checking auto-login: $e");
       return Left(RemoteFailures(e.toString()));
     }
   }
@@ -111,6 +121,7 @@ class AuthRepositoryImpl implements AuthRepository {
           .update({'imageUrl': imageUrl});
       return const Right(null);
     } catch (e) {
+      log("Failed to save user image for UID: $userId, Error: $e");
       return Left(RemoteFailures(e.toString()));
     }
   }

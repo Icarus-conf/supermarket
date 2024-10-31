@@ -37,58 +37,64 @@ class SingInViewBody extends StatelessWidget {
         }
         return Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                "SuperMarket",
-                style: AppTextStyle.textStyle24.copyWith(
-                  fontWeight: FontWeight.w900,
-                ),
-              ),
-              Lottie.asset(
-                "assets/lottie/logo.json",
-                height: height * 0.3,
-              ),
-              CustomTextFormField(
-                controller: emailController,
-                hintText: "Enter your email",
-              ),
-              const Gap(16),
-              CustomTextFormField(
-                controller: passwordController,
-                hintText: "Enter your password",
-              ),
-              const Gap(16),
-              CustomBtn(
-                text: "Sign In",
-                onPressed: () {
-                  BlocProvider.of<AuthBloc>(context).add(AuthEvent.loginUser(
-                      emailController.text, passwordController.text));
-                },
-              ),
-              const Gap(8),
-              Row(
+          child: SafeArea(
+            child: SingleChildScrollView(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Text(
-                    "Already have an account?",
+                  const Gap(100),
+                  Text(
+                    "SuperMarket",
+                    style: AppTextStyle.textStyle24.copyWith(
+                      fontWeight: FontWeight.w900,
+                    ),
                   ),
-                  TextButton(
+                  Lottie.asset(
+                    "assets/lottie/logo.json",
+                    height: height * 0.3,
+                  ),
+                  CustomTextFormField(
+                    controller: emailController,
+                    hintText: "Enter your email",
+                  ),
+                  const Gap(16),
+                  CustomTextFormField(
+                    controller: passwordController,
+                    hintText: "Enter your password",
+                  ),
+                  const Gap(8),
+                  CustomBtn(
+                    text: "Sign In",
                     onPressed: () {
-                      Navigator.pushNamed(context, RoutesNames.signUpView);
+                      BlocProvider.of<AuthBloc>(context).add(
+                          AuthEvent.loginUser(
+                              emailController.text, passwordController.text));
                     },
-                    child: const Text("Sign Up"),
+                  ),
+                  const Gap(8),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        "Already have an account?",
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, RoutesNames.signUpView);
+                        },
+                        child: const Text("Sign Up"),
+                      ),
+                    ],
+                  ),
+                  const Gap(16),
+                  TextButton(
+                    onPressed: () {},
+                    child: const Text("Terms and conditions"),
                   ),
                 ],
               ),
-              const Gap(16),
-              TextButton(
-                onPressed: () {},
-                child: const Text("Terms and conditions"),
-              ),
-            ],
+            ),
           ),
         );
       },
