@@ -71,7 +71,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                         curve: Curves.ease,
                       );
                       if (_pageIndex == 2) {
-                        Navigator.pushNamed(context, RoutesNames.signUpView);
+                        Navigator.pushNamed(context, RoutesNames.authView);
                       }
                     },
                     style: ElevatedButton.styleFrom(
