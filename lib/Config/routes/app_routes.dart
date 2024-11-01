@@ -39,6 +39,11 @@ class AppRoutes {
           builder: (context) => const SignUpView(),
         );
 
+      case RoutesNames.homeView:
+        return MaterialPageRoute(
+          builder: (context) => const CustomBottomNavBar(),
+        );
+
       case RoutesNames.cartView:
         return MaterialPageRoute(
           builder: (context) => const CartView(),
