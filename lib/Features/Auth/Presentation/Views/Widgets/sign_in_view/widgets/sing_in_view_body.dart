@@ -27,6 +27,7 @@ class SingInViewBody extends StatelessWidget {
         }
         if (state is AuthSuccess) {
           log("Successfully signed in");
+          Navigator.pushNamed(context, RoutesNames.homeView);
         }
       },
       builder: (context, state) {
