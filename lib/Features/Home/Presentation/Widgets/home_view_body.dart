@@ -1,13 +1,23 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:supermarket/Config/routes/app_routes.dart';
 import 'package:supermarket/Core/utils/app_colors.dart';
 import 'package:supermarket/Core/utils/app_text_style.dart';
+import 'package:supermarket/Features/Auth/Presentation/Views/Bloc/auth_bloc.dart';
 import 'package:supermarket/Features/Home/Presentation/Widgets/category_model.dart';
 import 'package:supermarket/Features/Home/Presentation/Widgets/products_grid_view.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
+
+  void _logout(BuildContext context) {
+    // Trigger logout event in your Auth Bloc or Provider
+    context.read<AuthBloc>().add(const LogoutUser());
+    // Navigate back to sign-in screen
+    Navigator.of(context).pushReplacementNamed(RoutesNames.signInView);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +32,9 @@ class HomeViewBody extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Image.asset(
-                    "assets/images/menu.png",
-                    width: 30,
+                  IconButton(
+                    icon: const Icon(Icons.logout),
+                    onPressed: () => _logout(context),
                   ),
                   Column(
                     children: [
