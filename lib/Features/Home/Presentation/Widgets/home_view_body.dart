@@ -90,22 +90,26 @@ class HomeViewBody extends StatelessWidget {
                 child: GridView.builder(
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 4,
-                    crossAxisSpacing: 20,
-                    mainAxisSpacing: 20,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
                   ),
-                  itemCount: 8,
+                  itemCount: categories.length,
                   itemBuilder: (context, index) {
                     return Column(
                       children: [
                         Container(
+                          height: 70,
+                          width: 100,
                           decoration: BoxDecoration(
                             gradient: AppColors.gradColor,
                             borderRadius: BorderRadius.circular(16),
                           ),
-                          child: Image.asset(categories.first.imageUrl),
+                          child: Image.asset(
+                            categories[index].imageUrl,
+                          ),
                         ),
                         Text(
-                          categories.first.name,
+                          categories[index].name,
                           style: AppTextStyle.textStyle12.copyWith(
                             fontWeight: FontWeight.w600,
                           ),

@@ -6,5 +6,6 @@ class CategoryModel {
 }
 
 List<CategoryModel> categories = [
-  CategoryModel(name: "grocery", imageUrl: "assets/images/groc-cat.png"),
+  CategoryModel(name: "Grocery", imageUrl: "assets/images/groc-cat.png"),
+  CategoryModel(name: "Food", imageUrl: "assets/images/food-cat.png"),
 ];

@@ -135,5 +135,35 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         ));
       }
     });
+
+    on<DeleteFromCart>((event, emit) async {
+      emit(state.copyWith(deleteFromCartStatus: ScreenStatus.loading));
+
+      final userId = FirebaseAuth.instance.currentUser?.uid;
+      if (userId == null) {
+        emit(state.copyWith(
+            deleteFromCartStatus: ScreenStatus.failure,
+            deleteFromCartFailures: RemoteFailures("User not logged in.")));
+        return;
+      }
+
+      final result =
+          await homeRepository.deleteCartItem(userId, event.productId);
+
+      result.fold(
+        (failure) => emit(state.copyWith(
+            deleteFromCartStatus: ScreenStatus.failure,
+            deleteFromCartFailures: failure)),
+        (_) {
+          final updatedCartItems = state.cartItems
+              ?.where((item) => item.productId != event.productId)
+              .toList();
+          emit(state.copyWith(
+            deleteFromCartStatus: ScreenStatus.success,
+            cartItems: updatedCartItems,
+          ));
+        },
+      );
+    });
   }
 }

@@ -12,5 +12,7 @@ class HomeState with _$HomeState {
     @Default(ScreenStatus.init) ScreenStatus addToCartStatus,
     Failures? addToCartFailures,
     @Default(ScreenStatus.init) ScreenStatus anotherStatus,
+    @Default(ScreenStatus.init) ScreenStatus deleteFromCartStatus,
+    Failures? deleteFromCartFailures,
   }) = _HomeState;
 }

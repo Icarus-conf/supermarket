@@ -23,6 +23,7 @@ mixin _$HomeEvent {
     required TResult Function(CartItem item) addToCart,
     required TResult Function(String productId, int quantity) updateQuantity,
     required TResult Function() fetchCartItems,
+    required TResult Function(String productId) deleteFromCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +33,7 @@ mixin _$HomeEvent {
     TResult? Function(CartItem item)? addToCart,
     TResult? Function(String productId, int quantity)? updateQuantity,
     TResult? Function()? fetchCartItems,
+    TResult? Function(String productId)? deleteFromCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +43,7 @@ mixin _$HomeEvent {
     TResult Function(CartItem item)? addToCart,
     TResult Function(String productId, int quantity)? updateQuantity,
     TResult Function()? fetchCartItems,
+    TResult Function(String productId)? deleteFromCart,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +54,7 @@ mixin _$HomeEvent {
     required TResult Function(AddToCart value) addToCart,
     required TResult Function(UpdateQuantity value) updateQuantity,
     required TResult Function(FetchCartItems value) fetchCartItems,
+    required TResult Function(DeleteFromCart value) deleteFromCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +64,7 @@ mixin _$HomeEvent {
     TResult? Function(AddToCart value)? addToCart,
     TResult? Function(UpdateQuantity value)? updateQuantity,
     TResult? Function(FetchCartItems value)? fetchCartItems,
+    TResult? Function(DeleteFromCart value)? deleteFromCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +74,7 @@ mixin _$HomeEvent {
     TResult Function(AddToCart value)? addToCart,
     TResult Function(UpdateQuantity value)? updateQuantity,
     TResult Function(FetchCartItems value)? fetchCartItems,
+    TResult Function(DeleteFromCart value)? deleteFromCart,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -140,6 +146,7 @@ class _$FetchProductsImpl implements FetchProducts {
     required TResult Function(CartItem item) addToCart,
     required TResult Function(String productId, int quantity) updateQuantity,
     required TResult Function() fetchCartItems,
+    required TResult Function(String productId) deleteFromCart,
   }) {
     return fetchProducts();
   }
@@ -152,6 +159,7 @@ class _$FetchProductsImpl implements FetchProducts {
     TResult? Function(CartItem item)? addToCart,
     TResult? Function(String productId, int quantity)? updateQuantity,
     TResult? Function()? fetchCartItems,
+    TResult? Function(String productId)? deleteFromCart,
   }) {
     return fetchProducts?.call();
   }
@@ -164,6 +172,7 @@ class _$FetchProductsImpl implements FetchProducts {
     TResult Function(CartItem item)? addToCart,
     TResult Function(String productId, int quantity)? updateQuantity,
     TResult Function()? fetchCartItems,
+    TResult Function(String productId)? deleteFromCart,
     required TResult orElse(),
   }) {
     if (fetchProducts != null) {
@@ -180,6 +189,7 @@ class _$FetchProductsImpl implements FetchProducts {
     required TResult Function(AddToCart value) addToCart,
     required TResult Function(UpdateQuantity value) updateQuantity,
     required TResult Function(FetchCartItems value) fetchCartItems,
+    required TResult Function(DeleteFromCart value) deleteFromCart,
   }) {
     return fetchProducts(this);
   }
@@ -192,6 +202,7 @@ class _$FetchProductsImpl implements FetchProducts {
     TResult? Function(AddToCart value)? addToCart,
     TResult? Function(UpdateQuantity value)? updateQuantity,
     TResult? Function(FetchCartItems value)? fetchCartItems,
+    TResult? Function(DeleteFromCart value)? deleteFromCart,
   }) {
     return fetchProducts?.call(this);
   }
@@ -204,6 +215,7 @@ class _$FetchProductsImpl implements FetchProducts {
     TResult Function(AddToCart value)? addToCart,
     TResult Function(UpdateQuantity value)? updateQuantity,
     TResult Function(FetchCartItems value)? fetchCartItems,
+    TResult Function(DeleteFromCart value)? deleteFromCart,
     required TResult orElse(),
   }) {
     if (fetchProducts != null) {
@@ -290,6 +302,7 @@ class _$AddProductImpl implements AddProduct {
     required TResult Function(CartItem item) addToCart,
     required TResult Function(String productId, int quantity) updateQuantity,
     required TResult Function() fetchCartItems,
+    required TResult Function(String productId) deleteFromCart,
   }) {
     return addProduct(product);
   }
@@ -302,6 +315,7 @@ class _$AddProductImpl implements AddProduct {
     TResult? Function(CartItem item)? addToCart,
     TResult? Function(String productId, int quantity)? updateQuantity,
     TResult? Function()? fetchCartItems,
+    TResult? Function(String productId)? deleteFromCart,
   }) {
     return addProduct?.call(product);
   }
@@ -314,6 +328,7 @@ class _$AddProductImpl implements AddProduct {
     TResult Function(CartItem item)? addToCart,
     TResult Function(String productId, int quantity)? updateQuantity,
     TResult Function()? fetchCartItems,
+    TResult Function(String productId)? deleteFromCart,
     required TResult orElse(),
   }) {
     if (addProduct != null) {
@@ -330,6 +345,7 @@ class _$AddProductImpl implements AddProduct {
     required TResult Function(AddToCart value) addToCart,
     required TResult Function(UpdateQuantity value) updateQuantity,
     required TResult Function(FetchCartItems value) fetchCartItems,
+    required TResult Function(DeleteFromCart value) deleteFromCart,
   }) {
     return addProduct(this);
   }
@@ -342,6 +358,7 @@ class _$AddProductImpl implements AddProduct {
     TResult? Function(AddToCart value)? addToCart,
     TResult? Function(UpdateQuantity value)? updateQuantity,
     TResult? Function(FetchCartItems value)? fetchCartItems,
+    TResult? Function(DeleteFromCart value)? deleteFromCart,
   }) {
     return addProduct?.call(this);
   }
@@ -354,6 +371,7 @@ class _$AddProductImpl implements AddProduct {
     TResult Function(AddToCart value)? addToCart,
     TResult Function(UpdateQuantity value)? updateQuantity,
     TResult Function(FetchCartItems value)? fetchCartItems,
+    TResult Function(DeleteFromCart value)? deleteFromCart,
     required TResult orElse(),
   }) {
     if (addProduct != null) {
@@ -448,6 +466,7 @@ class _$AddToCartImpl implements AddToCart {
     required TResult Function(CartItem item) addToCart,
     required TResult Function(String productId, int quantity) updateQuantity,
     required TResult Function() fetchCartItems,
+    required TResult Function(String productId) deleteFromCart,
   }) {
     return addToCart(item);
   }
@@ -460,6 +479,7 @@ class _$AddToCartImpl implements AddToCart {
     TResult? Function(CartItem item)? addToCart,
     TResult? Function(String productId, int quantity)? updateQuantity,
     TResult? Function()? fetchCartItems,
+    TResult? Function(String productId)? deleteFromCart,
   }) {
     return addToCart?.call(item);
   }
@@ -472,6 +492,7 @@ class _$AddToCartImpl implements AddToCart {
     TResult Function(CartItem item)? addToCart,
     TResult Function(String productId, int quantity)? updateQuantity,
     TResult Function()? fetchCartItems,
+    TResult Function(String productId)? deleteFromCart,
     required TResult orElse(),
   }) {
     if (addToCart != null) {
@@ -488,6 +509,7 @@ class _$AddToCartImpl implements AddToCart {
     required TResult Function(AddToCart value) addToCart,
     required TResult Function(UpdateQuantity value) updateQuantity,
     required TResult Function(FetchCartItems value) fetchCartItems,
+    required TResult Function(DeleteFromCart value) deleteFromCart,
   }) {
     return addToCart(this);
   }
@@ -500,6 +522,7 @@ class _$AddToCartImpl implements AddToCart {
     TResult? Function(AddToCart value)? addToCart,
     TResult? Function(UpdateQuantity value)? updateQuantity,
     TResult? Function(FetchCartItems value)? fetchCartItems,
+    TResult? Function(DeleteFromCart value)? deleteFromCart,
   }) {
     return addToCart?.call(this);
   }
@@ -512,6 +535,7 @@ class _$AddToCartImpl implements AddToCart {
     TResult Function(AddToCart value)? addToCart,
     TResult Function(UpdateQuantity value)? updateQuantity,
     TResult Function(FetchCartItems value)? fetchCartItems,
+    TResult Function(DeleteFromCart value)? deleteFromCart,
     required TResult orElse(),
   }) {
     if (addToCart != null) {
@@ -617,6 +641,7 @@ class _$UpdateQuantityImpl implements UpdateQuantity {
     required TResult Function(CartItem item) addToCart,
     required TResult Function(String productId, int quantity) updateQuantity,
     required TResult Function() fetchCartItems,
+    required TResult Function(String productId) deleteFromCart,
   }) {
     return updateQuantity(productId, quantity);
   }
@@ -629,6 +654,7 @@ class _$UpdateQuantityImpl implements UpdateQuantity {
     TResult? Function(CartItem item)? addToCart,
     TResult? Function(String productId, int quantity)? updateQuantity,
     TResult? Function()? fetchCartItems,
+    TResult? Function(String productId)? deleteFromCart,
   }) {
     return updateQuantity?.call(productId, quantity);
   }
@@ -641,6 +667,7 @@ class _$UpdateQuantityImpl implements UpdateQuantity {
     TResult Function(CartItem item)? addToCart,
     TResult Function(String productId, int quantity)? updateQuantity,
     TResult Function()? fetchCartItems,
+    TResult Function(String productId)? deleteFromCart,
     required TResult orElse(),
   }) {
     if (updateQuantity != null) {
@@ -657,6 +684,7 @@ class _$UpdateQuantityImpl implements UpdateQuantity {
     required TResult Function(AddToCart value) addToCart,
     required TResult Function(UpdateQuantity value) updateQuantity,
     required TResult Function(FetchCartItems value) fetchCartItems,
+    required TResult Function(DeleteFromCart value) deleteFromCart,
   }) {
     return updateQuantity(this);
   }
@@ -669,6 +697,7 @@ class _$UpdateQuantityImpl implements UpdateQuantity {
     TResult? Function(AddToCart value)? addToCart,
     TResult? Function(UpdateQuantity value)? updateQuantity,
     TResult? Function(FetchCartItems value)? fetchCartItems,
+    TResult? Function(DeleteFromCart value)? deleteFromCart,
   }) {
     return updateQuantity?.call(this);
   }
@@ -681,6 +710,7 @@ class _$UpdateQuantityImpl implements UpdateQuantity {
     TResult Function(AddToCart value)? addToCart,
     TResult Function(UpdateQuantity value)? updateQuantity,
     TResult Function(FetchCartItems value)? fetchCartItems,
+    TResult Function(DeleteFromCart value)? deleteFromCart,
     required TResult orElse(),
   }) {
     if (updateQuantity != null) {
@@ -750,6 +780,7 @@ class _$FetchCartItemsImpl implements FetchCartItems {
     required TResult Function(CartItem item) addToCart,
     required TResult Function(String productId, int quantity) updateQuantity,
     required TResult Function() fetchCartItems,
+    required TResult Function(String productId) deleteFromCart,
   }) {
     return fetchCartItems();
   }
@@ -762,6 +793,7 @@ class _$FetchCartItemsImpl implements FetchCartItems {
     TResult? Function(CartItem item)? addToCart,
     TResult? Function(String productId, int quantity)? updateQuantity,
     TResult? Function()? fetchCartItems,
+    TResult? Function(String productId)? deleteFromCart,
   }) {
     return fetchCartItems?.call();
   }
@@ -774,6 +806,7 @@ class _$FetchCartItemsImpl implements FetchCartItems {
     TResult Function(CartItem item)? addToCart,
     TResult Function(String productId, int quantity)? updateQuantity,
     TResult Function()? fetchCartItems,
+    TResult Function(String productId)? deleteFromCart,
     required TResult orElse(),
   }) {
     if (fetchCartItems != null) {
@@ -790,6 +823,7 @@ class _$FetchCartItemsImpl implements FetchCartItems {
     required TResult Function(AddToCart value) addToCart,
     required TResult Function(UpdateQuantity value) updateQuantity,
     required TResult Function(FetchCartItems value) fetchCartItems,
+    required TResult Function(DeleteFromCart value) deleteFromCart,
   }) {
     return fetchCartItems(this);
   }
@@ -802,6 +836,7 @@ class _$FetchCartItemsImpl implements FetchCartItems {
     TResult? Function(AddToCart value)? addToCart,
     TResult? Function(UpdateQuantity value)? updateQuantity,
     TResult? Function(FetchCartItems value)? fetchCartItems,
+    TResult? Function(DeleteFromCart value)? deleteFromCart,
   }) {
     return fetchCartItems?.call(this);
   }
@@ -814,6 +849,7 @@ class _$FetchCartItemsImpl implements FetchCartItems {
     TResult Function(AddToCart value)? addToCart,
     TResult Function(UpdateQuantity value)? updateQuantity,
     TResult Function(FetchCartItems value)? fetchCartItems,
+    TResult Function(DeleteFromCart value)? deleteFromCart,
     required TResult orElse(),
   }) {
     if (fetchCartItems != null) {
@@ -828,6 +864,172 @@ abstract class FetchCartItems implements HomeEvent {
 }
 
 /// @nodoc
+abstract class _$$DeleteFromCartImplCopyWith<$Res> {
+  factory _$$DeleteFromCartImplCopyWith(_$DeleteFromCartImpl value,
+          $Res Function(_$DeleteFromCartImpl) then) =
+      __$$DeleteFromCartImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String productId});
+}
+
+/// @nodoc
+class __$$DeleteFromCartImplCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$DeleteFromCartImpl>
+    implements _$$DeleteFromCartImplCopyWith<$Res> {
+  __$$DeleteFromCartImplCopyWithImpl(
+      _$DeleteFromCartImpl _value, $Res Function(_$DeleteFromCartImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of HomeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? productId = null,
+  }) {
+    return _then(_$DeleteFromCartImpl(
+      null == productId
+          ? _value.productId
+          : productId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeleteFromCartImpl implements DeleteFromCart {
+  const _$DeleteFromCartImpl(this.productId);
+
+  @override
+  final String productId;
+
+  @override
+  String toString() {
+    return 'HomeEvent.deleteFromCart(productId: $productId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteFromCartImpl &&
+            (identical(other.productId, productId) ||
+                other.productId == productId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, productId);
+
+  /// Create a copy of HomeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteFromCartImplCopyWith<_$DeleteFromCartImpl> get copyWith =>
+      __$$DeleteFromCartImplCopyWithImpl<_$DeleteFromCartImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchProducts,
+    required TResult Function(ProductModel product) addProduct,
+    required TResult Function(CartItem item) addToCart,
+    required TResult Function(String productId, int quantity) updateQuantity,
+    required TResult Function() fetchCartItems,
+    required TResult Function(String productId) deleteFromCart,
+  }) {
+    return deleteFromCart(productId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchProducts,
+    TResult? Function(ProductModel product)? addProduct,
+    TResult? Function(CartItem item)? addToCart,
+    TResult? Function(String productId, int quantity)? updateQuantity,
+    TResult? Function()? fetchCartItems,
+    TResult? Function(String productId)? deleteFromCart,
+  }) {
+    return deleteFromCart?.call(productId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchProducts,
+    TResult Function(ProductModel product)? addProduct,
+    TResult Function(CartItem item)? addToCart,
+    TResult Function(String productId, int quantity)? updateQuantity,
+    TResult Function()? fetchCartItems,
+    TResult Function(String productId)? deleteFromCart,
+    required TResult orElse(),
+  }) {
+    if (deleteFromCart != null) {
+      return deleteFromCart(productId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FetchProducts value) fetchProducts,
+    required TResult Function(AddProduct value) addProduct,
+    required TResult Function(AddToCart value) addToCart,
+    required TResult Function(UpdateQuantity value) updateQuantity,
+    required TResult Function(FetchCartItems value) fetchCartItems,
+    required TResult Function(DeleteFromCart value) deleteFromCart,
+  }) {
+    return deleteFromCart(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(FetchProducts value)? fetchProducts,
+    TResult? Function(AddProduct value)? addProduct,
+    TResult? Function(AddToCart value)? addToCart,
+    TResult? Function(UpdateQuantity value)? updateQuantity,
+    TResult? Function(FetchCartItems value)? fetchCartItems,
+    TResult? Function(DeleteFromCart value)? deleteFromCart,
+  }) {
+    return deleteFromCart?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FetchProducts value)? fetchProducts,
+    TResult Function(AddProduct value)? addProduct,
+    TResult Function(AddToCart value)? addToCart,
+    TResult Function(UpdateQuantity value)? updateQuantity,
+    TResult Function(FetchCartItems value)? fetchCartItems,
+    TResult Function(DeleteFromCart value)? deleteFromCart,
+    required TResult orElse(),
+  }) {
+    if (deleteFromCart != null) {
+      return deleteFromCart(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeleteFromCart implements HomeEvent {
+  const factory DeleteFromCart(final String productId) = _$DeleteFromCartImpl;
+
+  String get productId;
+
+  /// Create a copy of HomeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$DeleteFromCartImplCopyWith<_$DeleteFromCartImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$HomeState {
   ScreenStatus get productsStatus => throw _privateConstructorUsedError;
   List<ProductModel>? get products => throw _privateConstructorUsedError;
@@ -838,6 +1040,8 @@ mixin _$HomeState {
   ScreenStatus get addToCartStatus => throw _privateConstructorUsedError;
   Failures? get addToCartFailures => throw _privateConstructorUsedError;
   ScreenStatus get anotherStatus => throw _privateConstructorUsedError;
+  ScreenStatus get deleteFromCartStatus => throw _privateConstructorUsedError;
+  Failures? get deleteFromCartFailures => throw _privateConstructorUsedError;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -860,7 +1064,9 @@ abstract class $HomeStateCopyWith<$Res> {
       Failures? cartItemsFailures,
       ScreenStatus addToCartStatus,
       Failures? addToCartFailures,
-      ScreenStatus anotherStatus});
+      ScreenStatus anotherStatus,
+      ScreenStatus deleteFromCartStatus,
+      Failures? deleteFromCartFailures});
 }
 
 /// @nodoc
@@ -887,6 +1093,8 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
     Object? addToCartStatus = null,
     Object? addToCartFailures = freezed,
     Object? anotherStatus = null,
+    Object? deleteFromCartStatus = null,
+    Object? deleteFromCartFailures = freezed,
   }) {
     return _then(_value.copyWith(
       productsStatus: null == productsStatus
@@ -925,6 +1133,14 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
           ? _value.anotherStatus
           : anotherStatus // ignore: cast_nullable_to_non_nullable
               as ScreenStatus,
+      deleteFromCartStatus: null == deleteFromCartStatus
+          ? _value.deleteFromCartStatus
+          : deleteFromCartStatus // ignore: cast_nullable_to_non_nullable
+              as ScreenStatus,
+      deleteFromCartFailures: freezed == deleteFromCartFailures
+          ? _value.deleteFromCartFailures
+          : deleteFromCartFailures // ignore: cast_nullable_to_non_nullable
+              as Failures?,
     ) as $Val);
   }
 }
@@ -946,7 +1162,9 @@ abstract class _$$HomeStateImplCopyWith<$Res>
       Failures? cartItemsFailures,
       ScreenStatus addToCartStatus,
       Failures? addToCartFailures,
-      ScreenStatus anotherStatus});
+      ScreenStatus anotherStatus,
+      ScreenStatus deleteFromCartStatus,
+      Failures? deleteFromCartFailures});
 }
 
 /// @nodoc
@@ -971,6 +1189,8 @@ class __$$HomeStateImplCopyWithImpl<$Res>
     Object? addToCartStatus = null,
     Object? addToCartFailures = freezed,
     Object? anotherStatus = null,
+    Object? deleteFromCartStatus = null,
+    Object? deleteFromCartFailures = freezed,
   }) {
     return _then(_$HomeStateImpl(
       productsStatus: null == productsStatus
@@ -1009,6 +1229,14 @@ class __$$HomeStateImplCopyWithImpl<$Res>
           ? _value.anotherStatus
           : anotherStatus // ignore: cast_nullable_to_non_nullable
               as ScreenStatus,
+      deleteFromCartStatus: null == deleteFromCartStatus
+          ? _value.deleteFromCartStatus
+          : deleteFromCartStatus // ignore: cast_nullable_to_non_nullable
+              as ScreenStatus,
+      deleteFromCartFailures: freezed == deleteFromCartFailures
+          ? _value.deleteFromCartFailures
+          : deleteFromCartFailures // ignore: cast_nullable_to_non_nullable
+              as Failures?,
     ));
   }
 }
@@ -1025,7 +1253,9 @@ class _$HomeStateImpl implements _HomeState {
       this.cartItemsFailures,
       this.addToCartStatus = ScreenStatus.init,
       this.addToCartFailures,
-      this.anotherStatus = ScreenStatus.init})
+      this.anotherStatus = ScreenStatus.init,
+      this.deleteFromCartStatus = ScreenStatus.init,
+      this.deleteFromCartFailures})
       : _products = products,
         _cartItems = cartItems;
 
@@ -1067,10 +1297,15 @@ class _$HomeStateImpl implements _HomeState {
   @override
   @JsonKey()
   final ScreenStatus anotherStatus;
+  @override
+  @JsonKey()
+  final ScreenStatus deleteFromCartStatus;
+  @override
+  final Failures? deleteFromCartFailures;
 
   @override
   String toString() {
-    return 'HomeState(productsStatus: $productsStatus, products: $products, productsFailures: $productsFailures, cartItemsStatus: $cartItemsStatus, cartItems: $cartItems, cartItemsFailures: $cartItemsFailures, addToCartStatus: $addToCartStatus, addToCartFailures: $addToCartFailures, anotherStatus: $anotherStatus)';
+    return 'HomeState(productsStatus: $productsStatus, products: $products, productsFailures: $productsFailures, cartItemsStatus: $cartItemsStatus, cartItems: $cartItems, cartItemsFailures: $cartItemsFailures, addToCartStatus: $addToCartStatus, addToCartFailures: $addToCartFailures, anotherStatus: $anotherStatus, deleteFromCartStatus: $deleteFromCartStatus, deleteFromCartFailures: $deleteFromCartFailures)';
   }
 
   @override
@@ -1094,7 +1329,11 @@ class _$HomeStateImpl implements _HomeState {
             (identical(other.addToCartFailures, addToCartFailures) ||
                 other.addToCartFailures == addToCartFailures) &&
             (identical(other.anotherStatus, anotherStatus) ||
-                other.anotherStatus == anotherStatus));
+                other.anotherStatus == anotherStatus) &&
+            (identical(other.deleteFromCartStatus, deleteFromCartStatus) ||
+                other.deleteFromCartStatus == deleteFromCartStatus) &&
+            (identical(other.deleteFromCartFailures, deleteFromCartFailures) ||
+                other.deleteFromCartFailures == deleteFromCartFailures));
   }
 
   @override
@@ -1108,7 +1347,9 @@ class _$HomeStateImpl implements _HomeState {
       cartItemsFailures,
       addToCartStatus,
       addToCartFailures,
-      anotherStatus);
+      anotherStatus,
+      deleteFromCartStatus,
+      deleteFromCartFailures);
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -1129,7 +1370,9 @@ abstract class _HomeState implements HomeState {
       final Failures? cartItemsFailures,
       final ScreenStatus addToCartStatus,
       final Failures? addToCartFailures,
-      final ScreenStatus anotherStatus}) = _$HomeStateImpl;
+      final ScreenStatus anotherStatus,
+      final ScreenStatus deleteFromCartStatus,
+      final Failures? deleteFromCartFailures}) = _$HomeStateImpl;
 
   @override
   ScreenStatus get productsStatus;
@@ -1149,6 +1392,10 @@ abstract class _HomeState implements HomeState {
   Failures? get addToCartFailures;
   @override
   ScreenStatus get anotherStatus;
+  @override
+  ScreenStatus get deleteFromCartStatus;
+  @override
+  Failures? get deleteFromCartFailures;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.

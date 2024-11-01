@@ -8,4 +8,5 @@ abstract class HomeEvent with _$HomeEvent {
   const factory HomeEvent.updateQuantity(String productId, int quantity) =
       UpdateQuantity;
   const factory HomeEvent.fetchCartItems() = FetchCartItems;
+  const factory HomeEvent.deleteFromCart(String productId) = DeleteFromCart;
 }

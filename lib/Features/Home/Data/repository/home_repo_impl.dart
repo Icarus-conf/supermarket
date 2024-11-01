@@ -81,4 +81,20 @@ class HomeRepositoryImpl implements HomeRepository {
       return Left(RemoteFailures(e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failures, void>> deleteCartItem(
+      String userId, String productId) async {
+    try {
+      await firestore
+          .collection('carts')
+          .doc(userId)
+          .collection('items')
+          .doc(productId)
+          .delete();
+      return right(null);
+    } catch (e) {
+      return left(RemoteFailures(e.toString()));
+    }
+  }
 }

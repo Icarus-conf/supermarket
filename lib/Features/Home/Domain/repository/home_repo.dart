@@ -8,4 +8,6 @@ abstract class HomeRepository {
   Future<Either<Failures, List<ProductModel>>> fetchProducts();
   Future<Either<Failures, void>> addToCart(CartItem cartItem);
   Future<Either<Failures, List<CartItem>>> fetchCartItems(String userId);
+  Future<Either<Failures, void>> deleteCartItem(
+      String userId, String productId);
 }
