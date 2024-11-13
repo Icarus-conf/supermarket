@@ -107,7 +107,8 @@ class _ProductsGridViewState extends State<ProductsGridView> {
                               Container(
                                 height: 40,
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFF64DF8F),
+                                  color:
+                                      const Color.fromARGB(255, 203, 232, 213),
                                   borderRadius: BorderRadius.circular(16),
                                 ),
                                 child: Row(
@@ -162,7 +163,8 @@ class _ProductsGridViewState extends State<ProductsGridView> {
                                 icon: Container(
                                   padding: const EdgeInsets.all(8),
                                   decoration: BoxDecoration(
-                                    color: const Color(0xFF64DF8F),
+                                    color: const Color.fromARGB(
+                                        255, 203, 232, 213),
                                     borderRadius: BorderRadius.circular(16),
                                   ),
                                   child: SvgPicture.asset(
