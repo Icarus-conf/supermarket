@@ -64,19 +64,32 @@ class HomeRepositoryImpl implements HomeRepository {
           .collection('items')
           .get();
 
-      final cartItems = cartItemsSnapshot.docs.map((doc) {
-        final data = doc.data();
-        return CartItem(
-          userId: userId,
-          productId: data['productId'],
-          name: data['name'],
-          price: data['price'],
-          imageUrl: data['imageUrl'],
-          quantity: data['quantity'],
-        );
-      }).toList();
+      final Map<String, CartItem> groupedItems = {};
 
-      return Right(cartItems);
+      for (var doc in cartItemsSnapshot.docs) {
+        final data = doc.data();
+        final productId = data['productId'];
+        final quantity = data['quantity'] as int;
+
+        if (groupedItems.containsKey(productId)) {
+          // If the item already exists, update the quantity
+          groupedItems[productId] = groupedItems[productId]!.copyWith(
+            quantity: groupedItems[productId]!.quantity + quantity,
+          );
+        } else {
+          // Otherwise, create a new CartItem
+          groupedItems[productId] = CartItem(
+            userId: userId,
+            productId: productId,
+            name: data['name'],
+            price: data['price'],
+            imageUrl: data['imageUrl'],
+            quantity: quantity,
+          );
+        }
+      }
+
+      return Right(groupedItems.values.toList());
     } catch (e) {
       return Left(RemoteFailures(e.toString()));
     }
@@ -86,15 +99,23 @@ class HomeRepositoryImpl implements HomeRepository {
   Future<Either<Failures, void>> deleteCartItem(
       String userId, String productId) async {
     try {
-      await firestore
-          .collection('carts')
-          .doc(userId)
-          .collection('items')
-          .doc(productId)
-          .delete();
-      return right(null);
+      // Locate the specific document by userId and productId
+      final cartItemsRef =
+          firestore.collection('carts').doc(userId).collection('items');
+
+      // Query the document using productId to get the correct document to delete
+      final querySnapshot =
+          await cartItemsRef.where('productId', isEqualTo: productId).get();
+
+      // Ensure that we only delete the first document that matches the productId
+      if (querySnapshot.docs.isNotEmpty) {
+        await querySnapshot.docs.first.reference.delete();
+        return const Right(null);
+      } else {
+        return Left(RemoteFailures('Item not found in cart.'));
+      }
     } catch (e) {
-      return left(RemoteFailures(e.toString()));
+      return Left(RemoteFailures(e.toString()));
     }
   }
 }

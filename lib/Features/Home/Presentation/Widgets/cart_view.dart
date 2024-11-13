@@ -140,13 +140,12 @@ class CartItemTile extends StatelessWidget {
               ],
             ),
             IconButton(
-              icon: const Icon(Icons.delete),
-              onPressed: () {
-                context
-                    .read<HomeBloc>()
-                    .add(DeleteFromCart(cartItem.productId));
-              },
-            ),
+                icon: const Icon(Icons.delete),
+                onPressed: () {
+                  context
+                      .read<HomeBloc>()
+                      .add(DeleteFromCart(cartItem.productId));
+                }),
           ],
         ),
       ),

@@ -121,9 +121,26 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
             ));
           },
           (cartItems) {
+            // Group the items by productId and sum the quantities
+            final groupedItems = <String, CartItem>{};
+            for (var item in cartItems) {
+              if (groupedItems.containsKey(item.productId)) {
+                final existingItem = groupedItems[item.productId]!;
+                final updatedItem = existingItem.copyWith(
+                  quantity: existingItem.quantity + item.quantity,
+                );
+                groupedItems[item.productId] = updatedItem;
+              } else {
+                groupedItems[item.productId] = item;
+              }
+            }
+
+            // Convert the grouped map back to a list
+            final updatedCartItems = groupedItems.values.toList();
+
             emit(state.copyWith(
               cartItemsStatus: ScreenStatus.success,
-              cartItems: cartItems,
+              cartItems: updatedCartItems,
             ));
           },
         );

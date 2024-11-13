@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:supermarket/Core/enums/screen_status.dart';
 import 'package:supermarket/Core/utils/app_colors.dart';
 import 'package:supermarket/Core/utils/app_text_style.dart';
@@ -74,7 +75,7 @@ class _ProductsGridViewState extends State<ProductsGridView> {
                     ),
                     Container(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
+                        horizontal: 8,
                         vertical: 8,
                       ),
                       decoration: BoxDecoration(
@@ -101,53 +102,76 @@ class _ProductsGridViewState extends State<ProductsGridView> {
                             ),
                           ),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              IconButton(
-                                icon: const Icon(Icons.remove),
-                                onPressed: () {
-                                  if (product.quantity > 1) {
-                                    BlocProvider.of<HomeBloc>(context).add(
-                                      UpdateQuantity(
-                                        product.id,
-                                        product.quantity - 1,
+                              Container(
+                                height: 40,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFF64DF8F),
+                                  borderRadius: BorderRadius.circular(16),
+                                ),
+                                child: Row(
+                                  children: [
+                                    IconButton(
+                                      icon: const Icon(Icons.remove),
+                                      onPressed: () {
+                                        if (product.quantity > 1) {
+                                          BlocProvider.of<HomeBloc>(context)
+                                              .add(
+                                            UpdateQuantity(
+                                              product.id,
+                                              product.quantity - 1,
+                                            ),
+                                          );
+                                        }
+                                      },
+                                    ),
+                                    Text(
+                                      product.quantity.toString(),
+                                      style: AppTextStyle.textStyle12.copyWith(
+                                        fontWeight: FontWeight.bold,
                                       ),
-                                    );
-                                  }
-                                },
-                              ),
-                              Text(
-                                product.quantity.toString(),
-                                style: AppTextStyle.textStyle14.copyWith(
-                                  fontWeight: FontWeight.bold,
+                                    ),
+                                    IconButton(
+                                      icon: const Icon(Icons.add),
+                                      onPressed: () {
+                                        BlocProvider.of<HomeBloc>(context).add(
+                                          UpdateQuantity(
+                                            product.id,
+                                            product.quantity + 1,
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  ],
                                 ),
                               ),
                               IconButton(
-                                icon: const Icon(Icons.add),
                                 onPressed: () {
                                   BlocProvider.of<HomeBloc>(context).add(
-                                    UpdateQuantity(
-                                      product.id,
-                                      product.quantity + 1,
-                                    ),
+                                    AddToCart(CartItem(
+                                      userId: userId ?? '',
+                                      productId: product.id,
+                                      name: product.name,
+                                      price: product.price,
+                                      imageUrl: product.imageUrl,
+                                      quantity: product.quantity,
+                                    )),
                                   );
                                 },
+                                icon: Container(
+                                  padding: const EdgeInsets.all(8),
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xFF64DF8F),
+                                    borderRadius: BorderRadius.circular(16),
+                                  ),
+                                  child: SvgPicture.asset(
+                                    "assets/bag-2.svg",
+                                    width: 25,
+                                  ),
+                                ),
                               ),
                             ],
-                          ),
-                          ElevatedButton(
-                            onPressed: () {
-                              BlocProvider.of<HomeBloc>(context).add(
-                                AddToCart(CartItem(
-                                  userId: userId ?? '',
-                                  productId: product.id,
-                                  name: product.name,
-                                  price: product.price,
-                                  imageUrl: product.imageUrl,
-                                  quantity: product.quantity,
-                                )),
-                              );
-                            },
-                            child: const Text('Add to Cart'),
                           ),
                         ],
                       ),

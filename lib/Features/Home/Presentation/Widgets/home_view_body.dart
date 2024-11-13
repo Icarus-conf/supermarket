@@ -5,18 +5,40 @@ import 'package:gap/gap.dart';
 import 'package:supermarket/Config/routes/app_routes.dart';
 import 'package:supermarket/Core/utils/app_colors.dart';
 import 'package:supermarket/Core/utils/app_text_style.dart';
+import 'package:supermarket/Core/utils/services/location_service.dart';
 import 'package:supermarket/Features/Auth/Presentation/Views/Bloc/auth_bloc.dart';
 import 'package:supermarket/Features/Home/Presentation/Widgets/category_model.dart';
 import 'package:supermarket/Features/Home/Presentation/Widgets/products_grid_view.dart';
 
-class HomeViewBody extends StatelessWidget {
+class HomeViewBody extends StatefulWidget {
   const HomeViewBody({super.key});
 
+  @override
+  State<HomeViewBody> createState() => _HomeViewBodyState();
+}
+
+class _HomeViewBodyState extends State<HomeViewBody> {
   void _logout(BuildContext context) {
     // Trigger logout event in your Auth Bloc or Provider
     context.read<AuthBloc>().add(const LogoutUser());
     // Navigate back to sign-in screen
     Navigator.of(context).pushReplacementNamed(RoutesNames.signInView);
+  }
+
+  String location = 'Fetching location...';
+
+  void fetchLocation() async {
+    LocationService locationService = LocationService();
+    String fetchedLocation = await locationService.getCityAndCountry();
+    setState(() {
+      location = fetchedLocation;
+    });
+  }
+
+  @override
+  void initState() {
+    fetchLocation();
+    super.initState();
   }
 
   @override
@@ -48,7 +70,7 @@ class HomeViewBody extends StatelessWidget {
                         ],
                       ),
                       Text(
-                        "10 st, Nasr City, Egypt",
+                        location,
                         style: AppTextStyle.textStyle12.copyWith(
                           fontWeight: FontWeight.w600,
                         ),
@@ -96,7 +118,7 @@ class HomeViewBody extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                height: height * 0.2,
+                height: height * 0.12,
                 child: GridView.builder(
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 4,

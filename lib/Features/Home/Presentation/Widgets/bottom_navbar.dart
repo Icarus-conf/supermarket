@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:supermarket/Features/Home/Presentation/Bloc/home_bloc.dart';
 import 'package:supermarket/Features/Home/Presentation/Views/home_view.dart';
@@ -45,11 +46,11 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
               color: Colors.black,
               tabs: const [
                 GButton(
-                  icon: Icons.home,
+                  icon: FontAwesomeIcons.house,
                   text: 'Home',
                 ),
                 GButton(
-                  icon: Icons.shopping_bag,
+                  icon: FontAwesomeIcons.bagShopping,
                   text: 'Cart',
                 ),
               ],

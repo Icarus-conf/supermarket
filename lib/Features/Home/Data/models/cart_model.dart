@@ -1,5 +1,5 @@
 class CartItem {
-  final String userId; // Add userId field
+  final String userId;
   final String productId;
   final String name;
   final double price;
@@ -7,7 +7,7 @@ class CartItem {
   final int quantity;
 
   CartItem({
-    required this.userId, // Include userId in the constructor
+    required this.userId,
     required this.productId,
     required this.name,
     required this.price,
@@ -15,10 +15,29 @@ class CartItem {
     required this.quantity,
   });
 
-  // Convert a CartItem into a Map.
-  Map<String, dynamic> toJson() {
+  // Add the copyWith method
+  CartItem copyWith({
+    String? userId,
+    String? productId,
+    String? name,
+    double? price,
+    String? imageUrl,
+    int? quantity,
+  }) {
+    return CartItem(
+      userId: userId ?? this.userId,
+      productId: productId ?? this.productId,
+      name: name ?? this.name,
+      price: price ?? this.price,
+      imageUrl: imageUrl ?? this.imageUrl,
+      quantity: quantity ?? this.quantity,
+    );
+  }
+
+  // Add methods to convert to/from JSON if needed
+  Map<String, dynamic> toMap() {
     return {
-      'userId': userId, // Include userId in the JSON representation
+      'userId': userId,
       'productId': productId,
       'name': name,
       'price': price,
@@ -27,15 +46,14 @@ class CartItem {
     };
   }
 
-  // Convert a Map into a CartItem.
-  factory CartItem.fromJson(Map<String, dynamic> json) {
+  factory CartItem.fromMap(Map<String, dynamic> map, String userId) {
     return CartItem(
-      userId: json['userId'], // Extract userId from JSON
-      productId: json['productId'],
-      name: json['name'],
-      price: json['price'],
-      imageUrl: json['imageUrl'],
-      quantity: json['quantity'],
+      userId: userId,
+      productId: map['productId'],
+      name: map['name'],
+      price: map['price'],
+      imageUrl: map['imageUrl'],
+      quantity: map['quantity'],
     );
   }
 }
