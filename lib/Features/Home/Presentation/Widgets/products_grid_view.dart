@@ -43,7 +43,7 @@ class _ProductsGridViewState extends State<ProductsGridView> {
               crossAxisCount: 2,
               crossAxisSpacing: 10,
               mainAxisSpacing: 10,
-              childAspectRatio: 4 / 6,
+              childAspectRatio: 4 / 5,
             ),
             itemCount: state.products?.length ?? 0,
             itemBuilder: (context, index) {
