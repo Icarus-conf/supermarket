@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -85,8 +86,13 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                 height: height * 0.15,
                 child: Swiper(
                   itemBuilder: (BuildContext context, int index) {
-                    return Image.network(
-                      "https://via.placeholder.com/350x150",
+                    return CachedNetworkImage(
+                      imageUrl: "https://picsum.photos/200/300",
+                      placeholder: (context, url) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      },
                       fit: BoxFit.fill,
                     );
                   },

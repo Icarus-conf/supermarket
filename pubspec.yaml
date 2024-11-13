@@ -55,6 +55,7 @@ dependencies:
   geolocator: ^13.0.1
   font_awesome_flutter: ^10.8.0
   flutter_svg: ^2.0.14
+  cached_network_image: ^3.4.1
 
 dev_dependencies:
   flutter_test:

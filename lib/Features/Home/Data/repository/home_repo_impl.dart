@@ -72,12 +72,10 @@ class HomeRepositoryImpl implements HomeRepository {
         final quantity = data['quantity'] as int;
 
         if (groupedItems.containsKey(productId)) {
-          // If the item already exists, update the quantity
           groupedItems[productId] = groupedItems[productId]!.copyWith(
             quantity: groupedItems[productId]!.quantity + quantity,
           );
         } else {
-          // Otherwise, create a new CartItem
           groupedItems[productId] = CartItem(
             userId: userId,
             productId: productId,
@@ -99,15 +97,12 @@ class HomeRepositoryImpl implements HomeRepository {
   Future<Either<Failures, void>> deleteCartItem(
       String userId, String productId) async {
     try {
-      // Locate the specific document by userId and productId
       final cartItemsRef =
           firestore.collection('carts').doc(userId).collection('items');
 
-      // Query the document using productId to get the correct document to delete
       final querySnapshot =
           await cartItemsRef.where('productId', isEqualTo: productId).get();
 
-      // Ensure that we only delete the first document that matches the productId
       if (querySnapshot.docs.isNotEmpty) {
         await querySnapshot.docs.first.reference.delete();
         return const Right(null);
