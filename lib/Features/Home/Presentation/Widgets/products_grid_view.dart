@@ -28,6 +28,7 @@ class _ProductsGridViewState extends State<ProductsGridView> {
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
+
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
         // Handle loading state for products
@@ -39,11 +40,10 @@ class _ProductsGridViewState extends State<ProductsGridView> {
           return GridView.builder(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-              childAspectRatio: 4 / 5,
+              crossAxisSpacing: 5,
+              mainAxisExtent: height * 0.28,
             ),
             itemCount: state.products?.length ?? 0,
             itemBuilder: (context, index) {
@@ -114,7 +114,10 @@ class _ProductsGridViewState extends State<ProductsGridView> {
                                 child: Row(
                                   children: [
                                     IconButton(
-                                      icon: const Icon(Icons.remove),
+                                      icon: const Icon(
+                                        Icons.remove,
+                                        size: 15,
+                                      ),
                                       onPressed: () {
                                         if (product.quantity > 1) {
                                           BlocProvider.of<HomeBloc>(context)
@@ -134,7 +137,10 @@ class _ProductsGridViewState extends State<ProductsGridView> {
                                       ),
                                     ),
                                     IconButton(
-                                      icon: const Icon(Icons.add),
+                                      icon: const Icon(
+                                        Icons.add,
+                                        size: 15,
+                                      ),
                                       onPressed: () {
                                         BlocProvider.of<HomeBloc>(context).add(
                                           UpdateQuantity(
@@ -169,7 +175,7 @@ class _ProductsGridViewState extends State<ProductsGridView> {
                                   ),
                                   child: SvgPicture.asset(
                                     "assets/bag-2.svg",
-                                    width: 25,
+                                    width: 20,
                                   ),
                                 ),
                               ),

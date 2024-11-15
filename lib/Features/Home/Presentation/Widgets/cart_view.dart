@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:supermarket/Core/enums/screen_status.dart';
+import 'package:supermarket/Core/utils/app_colors.dart';
 import 'package:supermarket/Core/utils/app_text_style.dart';
 import 'package:supermarket/Features/Home/Data/models/cart_model.dart';
 import 'package:supermarket/Features/Home/Presentation/Bloc/home_bloc.dart';
@@ -48,7 +50,92 @@ class _CartViewState extends State<CartView> {
                     itemCount: cartItems.length,
                     itemBuilder: (context, index) {
                       final item = cartItems[index];
-                      return CartItemTile(cartItem: item);
+                      return Container(
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 8),
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          gradient: AppColors.gradColor,
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Image.asset(
+                                  item.imageUrl,
+                                  width: 100,
+                                  height: 80,
+                                ),
+                                const SizedBox(
+                                  width: 12,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      item.name,
+                                      style: AppTextStyle.textStyle16.copyWith(
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                    Row(
+                                      children: [
+                                        const Text(
+                                          "Total Quantity:",
+                                          style: AppTextStyle.textStyle12,
+                                        ),
+                                        const SizedBox(
+                                          width: 6,
+                                        ),
+                                        Text(
+                                          item.quantity.toString(),
+                                          style:
+                                              AppTextStyle.textStyle16.copyWith(
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        const Text(
+                                          "Total Price:",
+                                          style: AppTextStyle.textStyle12,
+                                        ),
+                                        const SizedBox(
+                                          width: 6,
+                                        ),
+                                        Text(
+                                          (item.price * item.quantity)
+                                              .toString(),
+                                          style:
+                                              AppTextStyle.textStyle16.copyWith(
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                context
+                                    .read<HomeBloc>()
+                                    .add(DeleteFromCart(item.productId));
+                              },
+                              icon: SvgPicture.asset(
+                                "assets/delete.svg",
+                                width: 30,
+                                color: const Color.fromARGB(255, 94, 120, 103),
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
                     },
                   ),
                 ),
@@ -59,12 +146,15 @@ class _CartViewState extends State<CartView> {
                       _showPaymentDialog(context, totalAmount);
                     },
                     style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.black,
                       padding: const EdgeInsets.symmetric(vertical: 16.0),
                       minimumSize: const Size(double.infinity, 50),
                     ),
                     child: Text(
                       'Pay $totalAmount EGP',
-                      style: AppTextStyle.textStyle16,
+                      style: AppTextStyle.textStyle16.copyWith(
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),

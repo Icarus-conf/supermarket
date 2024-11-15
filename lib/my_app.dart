@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData().copyWith(
           textTheme: GoogleFonts.poppinsTextTheme(),
-          scaffoldBackgroundColor: Colors.white,
+          scaffoldBackgroundColor: Colors.grey[200],
         ),
         onGenerateRoute: (settings) => AppRoutes.onGenerate(settings),
       ),
