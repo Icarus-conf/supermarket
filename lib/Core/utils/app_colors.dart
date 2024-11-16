@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   static const primaryColor = Color(0xFF397d78);
+  static const secondaryColor = Color.fromARGB(255, 203, 232, 213);
 
   static LinearGradient gradColor = LinearGradient(
     colors: [
